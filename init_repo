@@ -1,0 +1,39 @@
+#!/bin/bash
+
+usage() {
+    echo "[USAGE]: $0 -n name -t -b/-a"
+}
+
+[[ "$#" -eq 0 ]] && echo "No project name specified, using base mode" && usage
+
+if [ ! -d ".git" ]; then
+    echo "Not a git repo"
+    exit 1
+fi
+
+INCLUDE="include"
+SRC="src"
+
+# default value
+DIR="project"
+TEMPLATES="$HOME/cloned/new_workspace_creator/templates"
+
+# argparser
+while getopts "n:t" opt; do
+  case $opt in
+    n) DIR="$OPTARG" ;;
+    b) BINARY_MAKEFILE = true ;;
+    a) ARCHIVE_MAKEFILE = true;;
+    t) UNIT_TESTS=1 ;;
+    *) usage && exit 1;
+  esac
+done
+
+mkdir $SRC
+mkdir $INCLUDE
+[[ "$UNIT_TESTS" -eq 1 ]] && mkdir "unit_tests"
+
+cp "$TEMPLATES/Makefile" .
+genheader $DIR >> $SRC/main.c || false
+genmain >> $SRC/main.c || false
+geninclude $DIR >> "$INCLUDE/$DIR.h" || false
