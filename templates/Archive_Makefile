@@ -13,15 +13,7 @@ OBJ     = $(SRC:.c=.o)
 
 NAME    = binary
 
-LIBS	=	lib/libcli
-			lib/libconf		\
-			lib/libcore		\
-			lib/libds		\
-			lib/libio		\
-			lib/liblog		\
-			lib/libmem		\
-			lib/libnet		\
-			lib/libtest		\
+LIBS	=	
 
 LIB_FILES = $(foreach dir,$(LIBS),$(wildcard $(dir)/*.a))
 
