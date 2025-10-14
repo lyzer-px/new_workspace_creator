@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if (($# < 1)); then
+    echo "Missing project name"
+    exit 1
+fi
+
+ARG=$1
+UPPER=${ARG^^}
+
+genheader $1 && echo -e "#ifndef ${UPPER}_H\n    #define ${UPPER}_H\n\n#endif /* ${UPPER}_H */"
