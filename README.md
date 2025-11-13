@@ -4,10 +4,15 @@ Welcome to the Workspace Creator
 
 ## Installation
 
-First, clone this repository **into your HOME directory**
+First, clone this repository
 
 ```bash
 git clone https://github.com/LyZeRpx/new_workspace_creator.git
+```
+
+Then move it into your scripts directory, or /bin
+```bash
+cp new_workspace_creator/init_repo /bin
 ```
 
 ### USAGE
