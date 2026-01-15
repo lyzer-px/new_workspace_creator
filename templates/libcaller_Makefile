@@ -7,6 +7,8 @@
 
 CC      ?= gcc
 
+AR		?= ar
+
 SRC     = src/main.c
 
 OBJ     = $(SRC:.c=.o)
