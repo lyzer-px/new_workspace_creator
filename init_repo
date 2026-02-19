@@ -39,7 +39,7 @@ fi
 
 [[ "$BINARY_MAKEFILE" == "true" ]] || [[ "$BASE_MODE" == "true" ]] && cp "$TEMPLATES/binarymaker_Makefile" "Makefile" 2>/dev/null && mkdir -p lib
 [[ "$ARCHIVE_MAKEFILE" == "true" ]] && cp "$TEMPLATES/libmaker_Makefile" "Makefile" 2>/dev/null
-
+sed "s/= binary/= $DIR/g" Makefile
 mkdir -p "$SRC" "$INCLUDE"
 
 [[ "$UNIT_TESTS" == "true" ]] && mkdir -p unit_tests
